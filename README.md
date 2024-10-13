@@ -44,7 +44,9 @@ fn main() {
 ```
 
 ## API Documentation
-Here's a closer look at what TotallySafe offers:
+Here's a closer look at what TotallySafe offers.
+
+Feel free to copy this into your project!
 
 ```rs
 pub trait TotallySafe {
@@ -164,6 +166,8 @@ pub trait TotallySafe {
         )
     }
 }
+
+impl<T: ?Sized> TotallySafe for T {}
 ```
 
 ## License
