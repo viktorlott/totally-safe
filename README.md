@@ -28,7 +28,7 @@ Add `totally_safe` to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-totally_safe = "0.1.0"
+totally_safe = "0.1.1"
 ```
 
 Bring the trait into scope:
