@@ -1,5 +1,14 @@
 # TotallySafe
 
+<div align="left">
+    <a href="https://github.com/viktorlott/totally-safe">
+        <img alt="Github" src="https://img.shields.io/github/languages/code-size/viktorlott/totally-safe?style=flat-square&logo=github" height="20">
+    </a>
+    <a href="https://crates.io/crates/totally-safe">
+        <img alt="crates.io" src="https://img.shields.io/crates/v/totally-safe.svg?style=flat-square&logo=rust" height="20">
+    </a>
+</div>
+
 
 ## Overview
 
