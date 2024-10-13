@@ -2,5 +2,11 @@
 name = "totally-safe"
 version = "0.1.0"
 edition = "2021"
+readme = "README.md"
+authors = ["Viktor Lott"]
+repository = "https://github.com/viktorlott/totally-safe"
+description = "A library that allows you to bypass Rust's safety guarantees with totally safe patterns, featuring arbitrary lifetimes, aliasing, and more!"
+license = "MIT"
+
 
 [dependencies]
