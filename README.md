@@ -64,10 +64,8 @@ pub trait TotallySafe {
     /// // `any_lifetime_ref` now has an arbitrary lifetime.
     /// ```
     fn as_ref_alias<'x, 'any>(&'x self) -> &'any Self {
-        core::hint::black_box(
-            (((|inc, _| inc) as for<'a, 'b> fn(&'b Self, &'a &'b ()) -> &'a Self)
-                as for<'a, 'b> fn(&'x Self, &'a &'b ()) -> &'a Self)(self, &&()),
-        )
+        (((|inc, _| inc) as for<'a, 'b> fn(&'b Self, &'a &'b ()) -> &'a Self)
+            as for<'a, 'b> fn(&'x Self, &'a &'b ()) -> &'a Self)(self, &&())
     }
 
     /// Returns a mutable reference to `self` with an arbitrary lifetime.
@@ -84,10 +82,8 @@ pub trait TotallySafe {
     /// // `any_lifetime_mut_ref` now has an arbitrary lifetime.
     /// ```
     fn as_mut_alias<'x, 'any>(&'x mut self) -> &'any mut Self {
-        core::hint::black_box(
-            (((|inc, _| inc) as for<'a, 'b> fn(&'b mut Self, &'a &'b ()) -> &'a mut Self)
-                as for<'a, 'b> fn(&'x mut Self, &'a &'b ()) -> &'a mut Self)(self, &&()),
-        )
+        (((|inc, _| inc) as for<'a, 'b> fn(&'b mut Self, &'a &'b ()) -> &'a mut Self)
+            as for<'a, 'b> fn(&'x mut Self, &'a &'b ()) -> &'a mut Self)(self, &&())
     }
 
     /// Returns an array of mutable references to `self`.
@@ -131,12 +127,10 @@ pub trait TotallySafe {
     where
         Self: Sized,
     {
-        core::hint::black_box({
-            let mut data = Err::<Option<Box<Self>>, Option<Box<B>>>(None);
-            let option_b = data.as_mut_alias().as_mut().err().unwrap();
-            *data.as_mut_alias() = Ok(Some(Box::new(self)));
-            *option_b.take().unwrap()
-        })
+        let mut data = Err::<Option<Box<Self>>, Option<Box<B>>>(None);
+        let option_b = data.as_mut_alias().as_mut().err().unwrap();
+        *data.as_mut_alias() = Ok(Some(Box::new(self)));
+        *option_b.take().unwrap()
     }
 
     /// Creates a copy of `self` by duplicating its raw bytes.
@@ -157,13 +151,11 @@ pub trait TotallySafe {
     where
         Self: Sized,
     {
-        core::hint::black_box(
-            *core::ptr::slice_from_raw_parts_mut(self, size_of_val(self))
-                .transmute_into::<&mut [u8]>()
-                .to_vec()
-                .into_boxed_slice()
-                .transmute_into::<Box<Self>>(),
-        )
+        *core::ptr::slice_from_raw_parts_mut(self, size_of_val(self))
+            .transmute_into::<&mut [u8]>()
+            .to_vec()
+            .into_boxed_slice()
+            .transmute_into::<Box<Self>>()
     }
 }
 
