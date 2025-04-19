@@ -7,6 +7,9 @@
     <a href="https://crates.io/crates/totally-safe">
         <img alt="crates.io" src="https://img.shields.io/crates/v/totally-safe.svg?style=flat-square&logo=rust" height="20">
     </a>
+    <a href="https://crates.io/crates/totally-safe">
+        <img alt="Download" src="https://img.shields.io/crates/d/totally-safe.svg?style=flat-square&logo=rust" height="20">
+    </a>
 </div>
 
 
